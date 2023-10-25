@@ -38,14 +38,14 @@ public class ClassController {
             // Create weekly schedule
             System.out.print("Days of the week (e.g., Monday, Tuesday, Wednesday): ");
             String daysOfWeekInput = scanner.nextLine();
-            String[] daysOfWeek = daysOfWeekInput.split(", ");
+            String daysOfWeek = daysOfWeekInput.replaceAll("\\s+", "");
             System.out.print("Start hour: ");
             int startHour = scanner.nextInt();
             System.out.print("End hour: ");
             int endHour = scanner.nextInt();
             scanner.nextLine();  // Clear the newline character
 
-            WeeklySchedule schedule = new WeeklySchedule(new ArrayList<>(Arrays.asList(daysOfWeek)), startHour, endHour);
+            WeeklySchedule schedule = new WeeklySchedule(daysOfWeek, startHour, endHour);
 
             // Create a new class
             Class newClass = new Class(className, classroom, selectedTeacher, schedule);
