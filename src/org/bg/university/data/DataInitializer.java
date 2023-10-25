@@ -17,12 +17,12 @@ public class DataInitializer {
         university.addPartTimeTeacher(partTimeTeacher2);
 
         // Initialize students
-        Student student1 = new Student("Askar Sibgatulin", 20, "S1");
-        Student student2 = new Student("Anastasia Korchagina", 22, "S2");
-        Student student3 = new Student("András Horváth", 21, "S3");
-        Student student4 = new Student("Ana Silva", 23, "S4");
-        Student student5 = new Student("Carlos Bedarev", 19, "S5");
-        Student student6 = new Student("Olga Petrova", 24, "S6");
+        Student student1 = new Student("Askar Sibgatulin", 20, 1);
+        Student student2 = new Student("Anastasia Korchagina", 22, 2);
+        Student student3 = new Student("András Horváth", 21, 3);
+        Student student4 = new Student("Ana Silva", 23, 4);
+        Student student5 = new Student("Carlos Bedarev", 19, 5);
+        Student student6 = new Student("Olga Petrova", 24, 6);
 
         university.addStudent(student1);
         university.addStudent(student2);

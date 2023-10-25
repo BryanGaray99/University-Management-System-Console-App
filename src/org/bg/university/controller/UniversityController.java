@@ -55,7 +55,7 @@ public class UniversityController {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Student ID to list classes: ");
-        String studentId = scanner.nextLine();
+        int studentId = scanner.nextInt();
 
         List<Class> classes = university.getClassesForStudent(studentId);
 

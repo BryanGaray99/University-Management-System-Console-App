@@ -67,13 +67,13 @@ public class University {
         return null;
     }
 
-    public List<Class> getClassesForStudent(String studentId) {
+    public List<Class> getClassesForStudent(int studentId) {
         List<Class> classesForStudent = new ArrayList<>();
 
         for (Class classObj : classes) {
             List<Student> studentsInClass = classObj.getStudents();
             for (Student student : studentsInClass) {
-                if (student.getStudentId().equals(studentId)) {
+                if (student.getStudentId() == studentId) {
                     classesForStudent.add(classObj);
                     break;
                 }

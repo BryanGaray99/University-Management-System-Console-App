@@ -17,7 +17,7 @@ public class StudentController {
         int age = scanner.nextInt();
         scanner.nextLine();  // Clear the newline character
         System.out.print("Student ID: ");
-        String studentId = scanner.nextLine();
+        int studentId = scanner.nextInt();
 
         Student newStudent = new Student(name, age, studentId);
         university.addStudent(newStudent);
@@ -29,13 +29,13 @@ public class StudentController {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Student ID to remove: ");
-        String studentId = scanner.nextLine();
+        int studentId = scanner.nextInt();
 
         List<Student> students = university.getStudents();
         Student studentToRemove = null;
 
         for (Student student : students) {
-            if (student.getStudentId().equalsIgnoreCase(studentId)) {
+            if (student.getStudentId() == studentId) {
                 studentToRemove = student;
                 break;
             }
