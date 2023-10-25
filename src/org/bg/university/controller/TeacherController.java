@@ -31,7 +31,7 @@ public class TeacherController {
         int age = scanner.nextInt();
         scanner.nextLine();  // Clear the newline character
         System.out.print("Employee ID: ");
-        String employeeId = scanner.nextLine();
+        int employeeId = scanner.nextInt();
 
         // Prompt for teacher type (full-time or part-time)
         System.out.print("Teacher type (Full-Time or Part-Time): ");
@@ -45,7 +45,7 @@ public class TeacherController {
             int experienceYears = scanner.nextInt();
             scanner.nextLine();  // Clear the newline character
 
-            university.addFullTimeTeacher(new FullTimeTeacher(name, age, employeeId, baseSalary, experienceYears));
+            university.addFullTimeTeacher(new FullTimeTeacher(name, age, employeeId, experienceYears, baseSalary));
         } else if (teacherType.equalsIgnoreCase("Part-Time")) {
             System.out.print("Hourly wage: ");
             double hourlyWage = scanner.nextDouble();

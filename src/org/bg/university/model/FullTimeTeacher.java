@@ -6,7 +6,7 @@ public class FullTimeTeacher extends Teacher {
     private int experienceYears;
     private double baseSalary;
 
-    public FullTimeTeacher(String name, int age, String employeeId, double experienceYears, double baseSalary) {
+    public FullTimeTeacher(String name, int age, int employeeId, int experienceYears, double baseSalary) {
         super(name, age, employeeId);
         this.experienceYears = experienceYears;
         this.baseSalary = baseSalary;
