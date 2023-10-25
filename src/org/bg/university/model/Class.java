@@ -39,4 +39,12 @@ public class Class implements StudentClass {
     public WeeklySchedule getWeeklySchedule() {
         return weeklySchedule;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getClassroom() {
+        return classroom;
+    }
 }

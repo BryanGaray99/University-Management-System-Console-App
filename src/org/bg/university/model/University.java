@@ -49,4 +49,37 @@ public class University {
     public List<Class> getClasses() {
         return new ArrayList<>(classes);
     }
+
+    public void addFullTimeTeacher(FullTimeTeacher fullTimeTeacher) {
+        teachers.add(fullTimeTeacher);
+    }
+
+    public void addPartTimeTeacher(PartTimeTeacher partTimeTeacher) {
+        teachers.add(partTimeTeacher);
+    }
+
+    public Teacher findTeacherById(int teacherId) {
+        for (Teacher teacher : teachers) {
+            if (teacher.getEmployeeId() == teacherId) {
+                return teacher;
+            }
+        }
+        return null;
+    }
+
+    public List<Class> getClassesForStudent(String studentId) {
+        List<Class> classesForStudent = new ArrayList<>();
+
+        for (Class classObj : classes) {
+            List<Student> studentsInClass = classObj.getStudents();
+            for (Student student : studentsInClass) {
+                if (student.getStudentId().equals(studentId)) {
+                    classesForStudent.add(classObj);
+                    break;
+                }
+            }
+        }
+
+        return classesForStudent;
+    }
 }
