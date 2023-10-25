@@ -9,7 +9,7 @@ public class DataInitializer {
         FullTimeTeacher fullTimeTeacher1 = new FullTimeTeacher("John Smith", 50, "FT1", 10, 5);
         FullTimeTeacher fullTimeTeacher2 = new FullTimeTeacher("Maria Rodriguez", 65, "FT2", 35, 3);
         PartTimeTeacher partTimeTeacher1 = new PartTimeTeacher("László Nagy", 30, "PT1", 3000, 15);
-        PartTimeTeacher partTimeTeacher2 = new PartTimeTeacher("Elena Fernandez", 25, "PT2", 2500, 12);
+        PartTimeTeacher partTimeTeacher2 = new PartTimeTeacher("Elena Fernandez", 25, "PT2", 2100, 12);
 
         university.addFullTimeTeacher(fullTimeTeacher1);
         university.addFullTimeTeacher(fullTimeTeacher2);
