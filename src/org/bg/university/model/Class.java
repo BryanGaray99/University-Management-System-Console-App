@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Class implements StudentClass {
+    private int classId;
     private String name;
     private String classroom;
     private Teacher teacher;
     private List<Student> students;
     private WeeklySchedule weeklySchedule;
 
-    public Class(String name, String classroom, Teacher teacher, WeeklySchedule weeklySchedule) {
+    public Class(int classId, String name, String classroom, Teacher teacher, WeeklySchedule weeklySchedule) {
+        this.classId = classId;
         this.name = name;
         this.classroom = classroom;
         this.teacher = teacher;
@@ -38,6 +40,10 @@ public class Class implements StudentClass {
 
     public WeeklySchedule getWeeklySchedule() {
         return weeklySchedule;
+    }
+
+    public int getClassId() {
+        return classId;
     }
 
     public String getName() {

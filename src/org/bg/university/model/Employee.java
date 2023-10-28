@@ -1,6 +1,6 @@
 package org.bg.university.model;
 
-public abstract class Employee extends Person {
+public abstract class Employee extends User {
     private int employeeId;
 
     public Employee(String name, int age, int employeeId) {

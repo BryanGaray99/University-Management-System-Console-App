@@ -1,27 +1,33 @@
 package org.bg.university.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 public class WeeklySchedule {
     private String daysOfWeek;
-    private int startHour;
-    private int endHour;
+    private LocalTime startHour;
+    private LocalTime endHour;
 
-    public WeeklySchedule(String daysOfWeek, int startHour, int endHour) {
+    public WeeklySchedule(String daysOfWeek, String startHour, String endHour) {
         this.daysOfWeek = daysOfWeek;
-        this.startHour = startHour;
-        this.endHour = endHour;
+        this.startHour = LocalTime.parse(startHour, DateTimeFormatter.ofPattern("HH:mm"));
+        this.endHour = LocalTime.parse(endHour, DateTimeFormatter.ofPattern("HH:mm"));
     }
 
     public String getDaysOfWeek() {
         return daysOfWeek;
     }
 
-    public int getStartHour() {
+    public LocalTime getStartHour() {
         return startHour;
     }
 
-    public int getEndHour() {
+    public LocalTime getEndHour() {
         return endHour;
+    }
+
+    @Override
+    public String toString() {
+        return "Days of the Week: " + daysOfWeek + ", Start Hour: " + startHour + ", End Hour: " + endHour;
     }
 }

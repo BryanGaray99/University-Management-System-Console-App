@@ -12,7 +12,7 @@ public class ReadView {
 
         while (true) {
             System.out.println("\n*** Read Menu ***");
-            System.out.println("1. Print All Professors");
+            System.out.println("1. Print All Teachers");
             System.out.println("2. Print All Classes");
             System.out.println("3. List Classes for Student");
             System.out.println("4. Back to Main Menu");

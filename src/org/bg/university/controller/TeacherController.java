@@ -16,7 +16,17 @@ public class TeacherController {
             System.out.println("Name: " + teacher.getName());
             System.out.println("ID: " + teacher.getEmployeeId());
             System.out.println("Age: " + teacher.getAge());
-            System.out.println("Salary: " + teacher.calculateSalary());
+
+            if (teacher instanceof FullTimeTeacher) {
+                FullTimeTeacher fullTimeTeacher = (FullTimeTeacher) teacher;
+                System.out.println("Type: Full-Time Teacher");
+                System.out.printf("Salary: %.2f\n", fullTimeTeacher.calculateSalary());
+            } else if (teacher instanceof PartTimeTeacher) {
+                PartTimeTeacher partTimeTeacher = (PartTimeTeacher) teacher;
+                System.out.println("Type: Part-Time Teacher");
+                System.out.printf("Salary: %.2f\n", partTimeTeacher.calculateSalary());
+            }
+
             System.out.println("-------------------------------");
         }
     }
@@ -32,7 +42,7 @@ public class TeacherController {
         scanner.nextLine();  // Clear the newline character
         System.out.print("Employee ID: ");
         int employeeId = scanner.nextInt();
-
+        scanner.nextLine();
         // Prompt for teacher type (full-time or part-time)
         System.out.print("Teacher type (Full-Time or Part-Time): ");
         String teacherType = scanner.nextLine();
@@ -46,20 +56,20 @@ public class TeacherController {
             scanner.nextLine();  // Clear the newline character
 
             university.addFullTimeTeacher(new FullTimeTeacher(name, age, employeeId, experienceYears, baseSalary));
+            System.out.println("The teacher has been created.");
         } else if (teacherType.equalsIgnoreCase("Part-Time")) {
-            System.out.print("Hourly wage: ");
-            double hourlyWage = scanner.nextDouble();
+            System.out.print("Base salary: ");
+            double baseSalary = scanner.nextDouble();
             scanner.nextLine();  // Clear the newline character
             System.out.print("Active hours per week: ");
             int activeHoursPerWeek = scanner.nextInt();
             scanner.nextLine();  // Clear the newline character
 
-            university.addPartTimeTeacher(new PartTimeTeacher(name, age, employeeId, hourlyWage, activeHoursPerWeek));
+            university.addPartTimeTeacher(new PartTimeTeacher(name, age, employeeId, baseSalary, activeHoursPerWeek));
+            System.out.println("The teacher has been created.");
         } else {
             System.out.println("Invalid teacher type. Please enter 'Full-Time' or 'Part-Time'.");
         }
-
-        System.out.println("The teacher has been created.");
     }
 
 

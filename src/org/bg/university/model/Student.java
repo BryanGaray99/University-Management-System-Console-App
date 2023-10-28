@@ -1,6 +1,6 @@
 package org.bg.university.model;
 
-public class Student extends Person {
+public class Student extends User {
     private int studentId;
 
     public Student(String name, int age, int studentId) {

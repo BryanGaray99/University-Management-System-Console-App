@@ -3,6 +3,7 @@ package org.bg.university.controller;
 import java.util.Scanner;
 import java.util.List;
 
+import org.bg.university.model.Class;
 import org.bg.university.model.Student;
 import org.bg.university.model.University;
 
@@ -47,5 +48,27 @@ public class StudentController {
         } else {
             System.out.println("Student not found.");
         }
+    }
+
+    public static Student selectStudent(University university) {
+        Scanner scanner = new Scanner(System.in);
+
+        // List available students
+        List<Student> students = university.getStudents();
+        System.out.println("Available students:");
+        for (int i = 0; i < students.size(); i++) {
+            System.out.println((i + 1) + ". " + students.get(i).getName());
+        }
+
+        System.out.print("Select a student to add to a class (number): ");
+        int studentChoice = scanner.nextInt();
+        scanner.nextLine();
+
+        if (studentChoice <= 0 || studentChoice > students.size()) {
+            System.out.println("Invalid student selection.");
+            return null;
+        }
+
+        return students.get(studentChoice - 1);
     }
 }

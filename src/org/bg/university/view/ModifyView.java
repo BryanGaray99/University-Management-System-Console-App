@@ -37,7 +37,7 @@ public class ModifyView {
                     ClassController.createAndAddClass(university);
                     break;
                 case 4:
-                    UniversityController.createAndAddStudentToClass(university);
+                    UniversityController.addStudentToClass(university);
                     break;
                 case 5:
                     TeacherController.removeTeacherById(university);
@@ -46,7 +46,7 @@ public class ModifyView {
                     StudentController.removeStudentById(university);
                     break;
                 case 7:
-                    ClassController.removeClassByName(university);
+                    ClassController.removeClassById(university);
                     break;
                 case 8:
                     System.out.println("Returning to the Main Menu.");

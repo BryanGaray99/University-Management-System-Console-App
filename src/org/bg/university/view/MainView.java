@@ -19,8 +19,8 @@ public class MainView {
 
             while (true) {
                 System.out.println("\n*** Main Menu ***");
-                System.out.println("1. Modify Data (Create/Delete)");
-                System.out.println("2. Print Results");
+                System.out.println("1. Modify Registry");
+                System.out.println("2. Obtain Information");
                 System.out.println("3. Exit");
                 System.out.print("Select an option: ");
 

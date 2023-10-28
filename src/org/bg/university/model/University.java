@@ -82,4 +82,13 @@ public class University {
 
         return classesForStudent;
     }
+
+    public String getStudentNameById(int studentId) {
+        for (Student student : students) {
+            if (student.getStudentId() == studentId) {
+                return student.getName();
+            }
+        }
+        return null;
+    }
 }
