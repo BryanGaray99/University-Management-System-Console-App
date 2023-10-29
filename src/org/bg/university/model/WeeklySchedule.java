@@ -14,18 +14,6 @@ public class WeeklySchedule {
         this.endHour = LocalTime.parse(endHour, DateTimeFormatter.ofPattern("HH:mm"));
     }
 
-    public String getDaysOfWeek() {
-        return daysOfWeek;
-    }
-
-    public LocalTime getStartHour() {
-        return startHour;
-    }
-
-    public LocalTime getEndHour() {
-        return endHour;
-    }
-
     @Override
     public String toString() {
         return "Days of the Week: " + daysOfWeek + ", Start Hour: " + startHour + ", End Hour: " + endHour;

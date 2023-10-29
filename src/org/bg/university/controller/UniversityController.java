@@ -9,45 +9,33 @@ import org.bg.university.model.Student;
 import org.bg.university.model.University;
 
 public class UniversityController {
+    // Public methods
     public static void addStudentToClass(University university) {
         Scanner scanner = new Scanner(System.in);
-
-        // Pick an active student
         Student selectedStudent = StudentController.selectStudent(university);
+        if (selectedStudent == null) {
+            return;
+        }
+
+        List<Class> activeClasses = ClassController.getActiveClasses(university);
+        if (activeClasses.isEmpty()) {
+            System.out.println("There are no classes available.");
+            return;
+        }
 
         int classChoice;
         do {
-            // List available classes
-            List<Class> classes = university.getClasses();
-
-            if (classes.isEmpty()) {
-                System.out.println("There are no classes available.");
-                return;
-            }
-
-            // List active classes
-            System.out.println("Active classes:");
-            for (int i = 0; i < classes.size(); i++) {
-                if (classes.get(i).isActive()) {
-                    System.out.println((i + 1) + ". " + classes.get(i).getName());
-                }
-            }
+            ClassController.printListActiveClasses(activeClasses);
 
             System.out.print("Select a class to add the student (number) or enter 0 to exit: ");
             classChoice = scanner.nextInt();
             scanner.nextLine();
 
-            if (classChoice > 0 && classChoice <= classes.size()) {
-                Class selectedClass = classes.get(classChoice - 1);
-
-                if (selectedClass.getStudents().contains(selectedStudent)) {
-                    System.out.println("The student is already in this class.");
-                } else {
-                    selectedClass.addStudent(selectedStudent);
-                    System.out.println("The student has been added to the class.");
-                }
+            if (classChoice > 0 && classChoice <= activeClasses.size()) {
+                Class selectedClass = activeClasses.get(classChoice - 1);
+                ClassController.addStudentToClass(selectedClass, selectedStudent);
             } else {
-                System.out.println("Invalid class selection.");
+                System.out.println("Invalid selection. Please enter a valid class ID.");
             }
         } while (classChoice != 0);
     }
@@ -63,28 +51,20 @@ public class UniversityController {
         if (student == null) {
             System.out.println("Student not found.");
         } else if (student.isActive()) {
-            List<Class> classes = getClassesForStudent(university, studentId);
+            List<Class> classes = getActiveClassesForStudent(university, studentId);
 
             if (classes.isEmpty()) {
                 System.out.println("No active classes found for the student.");
             } else {
-                String studentName = StudentController.findStudentNameById(university, studentId);
-                System.out.println("Classes for the active student with ID '" + studentId + "':");
-                System.out.println("Name of the student: " + studentName);
-                for (Class classObj : classes) {
-                    System.out.println("Class Name: " + classObj.getName());
-                    System.out.println("Teacher: " + classObj.getTeacher().getName());
-                    System.out.println("Classroom: " + classObj.getClassroom());
-                    System.out.println("Schedule: " + classObj.getWeeklySchedule());
-                    System.out.println("-------------------------------");
-                }
+                printClassesForStudent(studentId, student.getName(), classes);
             }
         } else {
-            System.out.println("Student is  inactive.");
+            System.out.println("Student is inactive.");
         }
     }
 
-    public static List<Class> getClassesForStudent(University university, int studentId) {
+    // Private methods
+    private static List<Class> getActiveClassesForStudent(University university, int studentId) {
         List<Class> classesForStudent = new ArrayList<>();
 
         for (Class classObj : university.getClasses()) {
@@ -97,5 +77,17 @@ public class UniversityController {
             }
         }
         return classesForStudent;
+    }
+
+    private static void printClassesForStudent(int studentId, String studentName, List<Class> classes) {
+        System.out.println("Classes for the active student with ID '" + studentId + "':");
+        System.out.println("Name of the student: " + studentName);
+        for (Class classObj : classes) {
+            System.out.println("Class Name: " + classObj.getName());
+            System.out.println("Teacher: " + classObj.getTeacher().getName());
+            System.out.println("Classroom: " + classObj.getClassroom());
+            System.out.println("Schedule: " + classObj.getWeeklySchedule());
+            System.out.println("-------------------------------");
+        }
     }
 }
