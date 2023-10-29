@@ -12,7 +12,7 @@ of OOP: encapsulation, inheritance, polymorphism, and abstraction.
 The project is structured into the following folders:
 
 <P align="center">
-<img src="https://i.ibb.co/QnKtQ4H/project-Structure.png" alt="Preview.png" style="height: 400px;">
+<img src="https://i.ibb.co/YprDXrS/project-Structure.png" alt="Preview.png" style="height: 400px;">
 <P align="center">Project Structure</P>
 
 ### Design Pattern: MVC and SOLID Principles
@@ -94,9 +94,8 @@ for calculating salaries in the `Teacher` subclasses.
 
 ### Class Diagram
 <P align="center">
-   <img src="https://i.ibb.co/18HsdXs/Diagrama-UMLv2.png" alt="Preview.png" style="height: 400px; border-radius: 25px">
-
-<P align="center">Link to the image: https://i.ibb.co/18HsdXs/Diagrama-UMLv2.png </P>
+   <img src="https://i.ibb.co/dMfMdsw/Diagrama-UMLv3.png" alt="Preview.png" style="height: 400px; border-radius: 25px">
+<P align="center">Link to the image: https://i.ibb.co/dMfMdsw/Diagrama-UMLv3.png </P>
 The diagram was make with the tool: Software Ideas Modeler. In the diagram we can see the classes and the relationships 
 between them. The classes are represented by rectangles and the relationships by arrows. The arrows indicate the type of 
 relation. 
@@ -164,6 +163,11 @@ Each view displays options related to the operations that can be performed in th
 
 The project includes utilities such as an identifier generator and a teacher salary calculator. These utilities 
 are used in various controllers to simplify data management.
+
+## Validation
+
+The project includes a validation layer in which all user input is validated before being processed. This ensures
+that the application does not crash due to invalid input.
 
 ## How to Run the Project
 

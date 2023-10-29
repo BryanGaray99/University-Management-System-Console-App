@@ -3,10 +3,9 @@ package org.bg.university.controller;
 import java.util.Scanner;
 import java.util.List;
 
-import org.bg.university.model.FullTimeTeacher;
-import org.bg.university.model.PartTimeTeacher;
-import org.bg.university.model.Teacher;
-import org.bg.university.model.University;
+import org.bg.university.model.*;
+import org.bg.university.validation.StudentInputValidations;
+import org.bg.university.validation.TeacherInputValidations;
 
 /**
  * TeacherController is a class that contains methods to create, select, and change the status of a teacher.
@@ -24,9 +23,22 @@ public class TeacherController {
         System.out.println("Create a new teacher:");
         System.out.print("Teacher name: ");
         String name = scanner.nextLine();
+        // Validations
+        String nameError = TeacherInputValidations.validateName(name);
+        if (nameError != null) {
+            System.out.println(nameError);
+            return;
+        }
+
         System.out.print("Age: ");
         int age = scanner.nextInt();
         scanner.nextLine();
+        // Validations
+        String ageError = TeacherInputValidations.validateAge(age);
+        if (ageError != null) {
+            System.out.println(ageError);
+            return;
+        }
 
         System.out.print("Teacher type (Full-Time or Part-Time): ");
         String teacherType = scanner.nextLine();
@@ -123,11 +135,26 @@ public class TeacherController {
         System.out.print("Base salary: ");
         double baseSalary = scanner.nextDouble();
         scanner.nextLine();
+        // Validations
+        String baseSalaryError = TeacherInputValidations.isBaseSalaryValid(baseSalary);
+        if (baseSalaryError != null) {
+            System.out.println(baseSalaryError);
+            return;
+        }
+
         System.out.print("Years of experience: ");
         int experienceYears = scanner.nextInt();
         scanner.nextLine();
+        // Validations
+        String experienceYearsError = TeacherInputValidations.isExperienceYearsValid(experienceYears);
+        if (experienceYearsError != null) {
+            System.out.println(experienceYearsError);
+            return;
+        }
 
-        university.addFullTimeTeacher(new FullTimeTeacher(name, age, experienceYears, baseSalary));
+        FullTimeTeacher newFullTimeTeacher = new FullTimeTeacher(name, age, experienceYears, baseSalary);
+
+        university.addFullTimeTeacher(newFullTimeTeacher);
         System.out.println("The teacher has been created.");
     }
 
@@ -143,11 +170,25 @@ public class TeacherController {
         System.out.print("Base salary: ");
         double baseSalary = scanner.nextDouble();
         scanner.nextLine();
+        // Validations
+        String baseSalaryError = TeacherInputValidations.isBaseSalaryValid(baseSalary);
+        if (baseSalaryError != null) {
+            System.out.println(baseSalaryError);
+            return;
+        }
+
         System.out.print("Active hours per week: ");
         int activeHoursPerWeek = scanner.nextInt();
         scanner.nextLine();
+        // Validations
+        String activeHoursPerWeekError = TeacherInputValidations.isActiveHoursPerWeekValid(activeHoursPerWeek);
+        if (activeHoursPerWeekError != null) {
+            System.out.println(activeHoursPerWeekError);
+            return;
+        }
 
-        university.addPartTimeTeacher(new PartTimeTeacher(name, age, baseSalary, activeHoursPerWeek));
+        PartTimeTeacher newPartTimeTeacher = new PartTimeTeacher(name, age, baseSalary, activeHoursPerWeek);
+        university.addPartTimeTeacher(newPartTimeTeacher);
         System.out.println("The teacher has been created.");
     }
 

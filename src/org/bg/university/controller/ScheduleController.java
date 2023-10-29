@@ -1,9 +1,10 @@
 package org.bg.university.controller;
 
 import org.bg.university.model.WeeklySchedule;
+import org.bg.university.validation.ScheduleInputValidations;
 
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -18,9 +19,12 @@ public class ScheduleController {
      */
     public static WeeklySchedule createWeeklySchedule() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Days of the week (e.g., Monday, Tuesday, Wednesday): ");
-        String daysOfWeekInput = scanner.nextLine();
-        String daysOfWeek = daysOfWeekInput.replaceAll("\\s+", "");
+        List<String> daysOfWeek = selectDaysOfWeek(scanner);
+
+        if (daysOfWeek.isEmpty()) {
+            System.out.println("No days have been selected.");
+            return null;
+        }
 
         System.out.print("Start hour (HH:mm): ");
         String startHour = scanner.nextLine();
@@ -28,27 +32,84 @@ public class ScheduleController {
         System.out.print("End hour (HH:mm): ");
         String endHour = scanner.nextLine();
 
-        if (isValidTimeFormat(startHour) && isValidTimeFormat(endHour)) {
+        if (ScheduleInputValidations.isValidTimeFormat(startHour) && ScheduleInputValidations.isValidTimeFormat(endHour)
+                && ScheduleInputValidations.isValidTimeRange(startHour, endHour)
+                && ScheduleInputValidations.isValidTimeDifference(startHour, endHour)) {
             return new WeeklySchedule(daysOfWeek, startHour, endHour);
         } else {
-            System.out.println("Invalid time format. Please use the 'HH:mm' format (e.g., 08:30).");
+            System.out.println("Invalid schedule. Please make sure the times are valid.");
             return null;
         }
     }
 
-    /**
-     * Checks if a time is in the 'HH:mm' format.
-     * @param time A string representing a time in the 'HH:mm' format.
-     * @return True if the time is in the 'HH:mm' format, false otherwise.
-     */
     // Private methods
-    private static boolean isValidTimeFormat(String time) {
-        try {
-            LocalTime.parse(time, DateTimeFormatter.ofPattern("HH:mm"));
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+    /**
+     * Selects the days of the week.
+     * @param scanner A Scanner object to read user input.
+     * @return A list of the days of the week.
+     */
+    private static List<String> selectDaysOfWeek(Scanner scanner) {
+        printDaysOfWeek();
+        List<String> daysOfWeek = new ArrayList<>();
+
+        int dayChoice;
+        do {
+            System.out.print("Select a day (0 to finish): ");
+            dayChoice = scanner.nextInt();
+            scanner.nextLine();
+
+            if (dayChoice == 0) {
+                break;
+            } else if (dayChoice >= 1 && dayChoice <= 6) {
+                String day = getDayFromChoice(dayChoice);
+                if (!daysOfWeek.contains(day)) {
+                    daysOfWeek.add(day);
+                    System.out.println(day + " has been added.");
+                } else {
+                    System.out.println(day + " is already added.");
+                }
+            } else {
+                System.out.println("Invalid choice. Please select a valid day.");
+            }
+        } while (true);
+
+        return daysOfWeek;
     }
 
+    /**
+     * Prints the days of the week.
+     */
+    private static void printDaysOfWeek() {
+        System.out.println("Days of the week:");
+        System.out.println("1. Monday");
+        System.out.println("2. Tuesday");
+        System.out.println("3. Wednesday");
+        System.out.println("4. Thursday");
+        System.out.println("5. Friday");
+        System.out.println("6. Saturday");
+        System.out.println("0. Done");
+    }
+
+    /**
+     * @param choice The choice of the day.
+     * @return The day corresponding to the choice.
+     */
+    private static String getDayFromChoice(int choice) {
+        switch (choice) {
+            case 1:
+                return "Monday";
+            case 2:
+                return "Tuesday";
+            case 3:
+                return "Wednesday";
+            case 4:
+                return "Thursday";
+            case 5:
+                return "Friday";
+            case 6:
+                return "Saturday";
+            default:
+                return "";
+        }
+    }
 }

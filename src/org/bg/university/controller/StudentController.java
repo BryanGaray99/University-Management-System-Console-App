@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.bg.university.model.Student;
 import org.bg.university.model.University;
+import org.bg.university.validation.StudentInputValidations;
 
 /**
  * StudentController is a class that contains methods to create, select, and change the status of a student.
@@ -22,9 +23,22 @@ public class StudentController {
         System.out.println("Create a new student:");
         System.out.print("Student name: ");
         String name = scanner.nextLine();
+        // Validation
+        String nameError = StudentInputValidations.validateName(name);
+        if (nameError != null) {
+            System.out.println(nameError);
+            return;
+        }
+
         System.out.print("Age: ");
         int age = scanner.nextInt();
         scanner.nextLine();
+        // Validation
+        String ageError = StudentInputValidations.validateAge(age);
+        if (ageError != null) {
+            System.out.println(ageError);
+            return;
+        }
 
         Student newStudent = new Student(name, age);
         university.addStudent(newStudent);

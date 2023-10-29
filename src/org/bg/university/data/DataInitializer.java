@@ -3,6 +3,9 @@ package org.bg.university.data;
 import org.bg.university.model.*;
 import org.bg.university.model.Class;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Class for initializing the university with some data
  * @author Bryan Garay
@@ -39,22 +42,27 @@ public class DataInitializer {
         university.addStudent(student5);
         university.addStudent(student6);
 
+        List<String> daysOfWeek = new ArrayList<>();
+        daysOfWeek.add("Monday");
+        daysOfWeek.add("Wednesday");
+        daysOfWeek.add("Friday");
+
         // Initialize classes
-        Class class1 = new Class("Math 101", "Room 101", fullTimeTeacher1, new WeeklySchedule("Monday, Wednesday", "08:30", "10:00"));
+        Class class1 = new Class("Math 101", "Room 101", fullTimeTeacher1, new WeeklySchedule(daysOfWeek, "08:30", "10:00"));
         class1.addStudent(student1);
         class1.addStudent(student2);
 
-        Class class2 = new Class("History 201", "Room 201", partTimeTeacher1, new WeeklySchedule("Tuesday, Thursday", "15:00", "17:00"));
+        Class class2 = new Class("History 201", "Room 201", partTimeTeacher1, new WeeklySchedule(daysOfWeek, "15:00", "17:00"));
         class2.addStudent(student1);
         class2.addStudent(student3);
         class2.addStudent(student4);
 
-        Class class3 = new Class("Physics 301", "Room 301", fullTimeTeacher2, new WeeklySchedule("Monday, Wednesday", "09:45", "12:00"));
+        Class class3 = new Class("Physics 301", "Room 301", fullTimeTeacher2, new WeeklySchedule(daysOfWeek, "09:45", "12:00"));
         class3.addStudent(student1);
         class3.addStudent(student3);
         class3.addStudent(student5);
 
-        Class class4 = new Class("Literature 401", "Room 401", partTimeTeacher2, new WeeklySchedule("Tuesday, Thursday", "13:00", "14:30"));
+        Class class4 = new Class("Literature 401", "Room 401", partTimeTeacher2, new WeeklySchedule(daysOfWeek, "13:00", "14:30"));
         class4.addStudent(student6);
 
         university.addClass(class1);

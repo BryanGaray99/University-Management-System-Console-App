@@ -2,16 +2,18 @@ package org.bg.university.model;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Bryan Garay
  */
 public class WeeklySchedule {
-    private String daysOfWeek;
+    private List<String> daysOfWeek;
     private LocalTime startHour;
     private LocalTime endHour;
 
-    public WeeklySchedule(String daysOfWeek, String startHour, String endHour) {
+    public WeeklySchedule(List<String> daysOfWeek, String startHour, String endHour) {
         this.daysOfWeek = daysOfWeek;
         this.startHour = LocalTime.parse(startHour, DateTimeFormatter.ofPattern("HH:mm"));
         this.endHour = LocalTime.parse(endHour, DateTimeFormatter.ofPattern("HH:mm"));

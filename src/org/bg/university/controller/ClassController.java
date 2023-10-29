@@ -8,6 +8,8 @@ import org.bg.university.model.Teacher;
 import org.bg.university.model.Student;
 import org.bg.university.model.WeeklySchedule;
 import org.bg.university.model.University;
+import org.bg.university.validation.ClassInputValidations;
+import org.bg.university.validation.TeacherInputValidations;
 
 /**
  * This class contains methods to create and manage classes.
@@ -27,8 +29,21 @@ public class ClassController {
 
         System.out.print("Class name: ");
         String className = scanner.nextLine();
+        // Validations
+        String classNameError = ClassInputValidations.validateClassName(className);
+        if (classNameError != null) {
+            System.out.println(classNameError);
+            return;
+        }
+
         System.out.print("Classroom: ");
         String classroom = scanner.nextLine();
+        // Validations
+        String classroomError = ClassInputValidations.validateClassroom(classroom);
+        if (classroomError != null) {
+            System.out.println(classroomError);
+            return;
+        }
 
         Teacher selectedTeacher = TeacherController.selectActiveTeacher(university);
         if (selectedTeacher == null) {
