@@ -25,7 +25,7 @@ public class MainView {
                 System.out.print("Select an option: ");
 
                 int option = scanner.nextInt();
-                scanner.nextLine();  // Clear the newline character
+                scanner.nextLine();
 
                 switch (option) {
                     case 1:

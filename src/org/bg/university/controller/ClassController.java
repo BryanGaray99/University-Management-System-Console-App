@@ -17,9 +17,6 @@ public class ClassController {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Create a new class:");
-        System.out.print("Class ID: ");
-        int classId = scanner.nextInt();
-        scanner.nextLine();
 
         System.out.print("Class name: ");
         String className = scanner.nextLine();
@@ -28,14 +25,21 @@ public class ClassController {
 
         // List available teachers
         List<Teacher> teachers = university.getTeachers();
-        System.out.println("Available teachers:");
+        if (teachers.isEmpty()) {
+            System.out.println("There are no teachers available.");
+            return;
+        }
+
+        System.out.println("Active teachers:");
         for (int i = 0; i < teachers.size(); i++) {
-            System.out.println((i + 1) + ". " + teachers.get(i).getName());
+            if (teachers.get(i).isActive()) {
+                System.out.println((i + 1) + ". " + teachers.get(i).getName());
+            }
         }
 
         System.out.print("Select a teacher for the class (number): ");
         int teacherChoice = scanner.nextInt();
-        scanner.nextLine();  // Clear the newline character
+        scanner.nextLine();
 
         if (teacherChoice > 0 && teacherChoice <= teachers.size()) {
             Teacher selectedTeacher = teachers.get(teacherChoice - 1);
@@ -54,22 +58,30 @@ public class ClassController {
             if (isValidTimeFormat(startHour) && isValidTimeFormat(endHour)) {
                 WeeklySchedule schedule = new WeeklySchedule(daysOfWeek, startHour, endHour);
                 // Create a new class
-                Class newClass = new Class(classId, className, classroom, selectedTeacher, schedule);
+                Class newClass = new Class(className, classroom, selectedTeacher, schedule);
 
                 boolean addStudents = true;
-
 
                 do {
                     // List available students
                     List<Student> students = university.getStudents();
-                    System.out.println("Available students:");
+
+                    if (students.isEmpty()) {
+                        System.out.println("There are no students available.");
+                        return;
+                    }
+
+                    // Active students
+                    System.out.println("Active students:");
                     for (int i = 0; i < students.size(); i++) {
-                        System.out.println((i + 1) + ". " + students.get(i).getName());
+                        if (students.get(i).isActive()) {
+                            System.out.println((i + 1) + ". " + students.get(i).getName());
+                        }
                     }
 
                     System.out.print("Select a student to add to the class (number) or enter 0 to finish: ");
                     int studentChoice = scanner.nextInt();
-                    scanner.nextLine();  // Clear the newline character
+                    scanner.nextLine();
 
                     if (studentChoice == 0) {
                         addStudents = false;
@@ -99,6 +111,15 @@ public class ClassController {
         }
     }
 
+    public static Class findClassById(University university, int classId) {
+        for (Class classObj : university.getClasses()) {
+            if (classObj.getClassId() == classId) {
+                return classObj;
+            }
+        }
+        return null;
+    }
+
     public static boolean isValidTimeFormat(String time) {
         try {
             LocalTime.parse(time, DateTimeFormatter.ofPattern("HH:mm"));
@@ -108,39 +129,20 @@ public class ClassController {
         }
     }
 
-    public static void removeClassById(University university) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("ID of the class to remove: ");
-        int classId = scanner.nextInt();
-        scanner.nextLine();
-
-        // Find the class by ID
-        Class classToRemove = null;
-        List<Class> classes = university.getClasses();
-
-        for (Class classObj : classes) {
-            if (classObj.getClassId() == classId) {
-                classToRemove = classObj;
-                break;
-            }
-        }
-
-        if (classToRemove != null) {
-            university.removeClass(classToRemove);
-            System.out.println("The class with ID '" + classId + "' has been removed.");
-        } else {
-            System.out.println("Class not found.");
-        }
-    }
-
-    public static void printAllClasses(University university) {
+    public static void printActiveClasses(University university) {
         List<Class> classes = university.getClasses();
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("List of classes:");
+        if (classes.isEmpty()) {
+            System.out.println("There are no classes.");
+            return;
+        }
+
+        System.out.println("List of active classes:");
         for (int i = 0; i < classes.size(); i++) {
-            System.out.println((i + 1) + ". " + classes.get(i).getName());
+            if (classes.get(i).isActive()) {
+                System.out.println((i + 1) + ". " + classes.get(i).getName());
+            }
         }
 
         System.out.println("0. Exit");
@@ -164,15 +166,43 @@ public class ClassController {
         System.out.println("Class Name: " + classObj.getName());
         System.out.println("Classroom: " + classObj.getClassroom());
         System.out.println("Weekly Schedule: " + classObj.getWeeklySchedule());
-        System.out.println("Teacher: " + classObj.getTeacher().getName());
+        if (classObj.getTeacher().isActive()){
+            System.out.println("Teacher: " + classObj.getTeacher().getName());
+        } else {
+            System.out.println("There isn't an active teacher for this class.");
+        }
         System.out.println("List of Students:");
 
         List<Student> students = classObj.getStudents();
+        if (students.isEmpty()) {
+            System.out.println("  - There are no students in this class.");
+        }
+
         for (Student student : students) {
-            System.out.println("  - Name: " + student.getName());
-            System.out.println("    ID: " + student.getStudentId());
-            System.out.println("    Age: " + student.getAge());
+            if (student.isActive()) {
+                System.out.println("  - ID: " + student.getStudentId());
+                System.out.println("    Name: " + student.getName());
+                System.out.println("    Age: " + student.getAge());
+            }
         }
         System.out.println("-------------------------------");
     }
+
+    public static void changeStatusClassById(University university) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("ID of the class to change status: ");
+        int classId = Integer.parseInt(scanner.nextLine());
+
+        Class classObj = findClassById(university, classId);
+
+        if (classObj != null) {
+            boolean isActive = classObj.isActive();
+            classObj.setActive(!isActive);
+            System.out.println("Class "+ classObj.getName() + " with ID '" + classId + "' has been set as " + (isActive ? "Inactive." : "Active."));
+        } else {
+            System.out.println("Class not found.");
+        }
+    }
+
 }

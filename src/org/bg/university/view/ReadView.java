@@ -12,21 +12,21 @@ public class ReadView {
 
         while (true) {
             System.out.println("\n*** Read Menu ***");
-            System.out.println("1. Print All Teachers");
-            System.out.println("2. Print All Classes");
+            System.out.println("1. Print Active Teachers");
+            System.out.println("2. Print Active Classes");
             System.out.println("3. List Classes for Student");
             System.out.println("4. Back to Main Menu");
             System.out.print("Select an option: ");
 
             int option = scanner.nextInt();
-            scanner.nextLine();  // Clear the newline character
+            scanner.nextLine();
 
             switch (option) {
                 case 1:
-                    TeacherController.printAllProfessors(university);
+                    TeacherController.printActiveTeachers(university);
                     break;
                 case 2:
-                    ClassController.printAllClasses(university);
+                    ClassController.printActiveClasses(university);
                     break;
                 case 3:
                     UniversityController.listClassesForStudent(university);

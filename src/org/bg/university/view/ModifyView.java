@@ -13,18 +13,44 @@ public class ModifyView {
 
         while (true) {
             System.out.println("\n*** Modify Menu ***");
-            System.out.println("1. Create Teacher");
-            System.out.println("2. Create Student");
-            System.out.println("3. Create Class");
-            System.out.println("4. Add Student to Class");
-            System.out.println("5. Remove Teacher");
-            System.out.println("6. Remove Student");
-            System.out.println("7. Remove Class");
-            System.out.println("8. Back to Main Menu");
+            System.out.println("1. Create/Add");
+            System.out.println("2. Change Status");
+            System.out.println("3. Back to Main Menu");
             System.out.print("Select an option: ");
 
             int option = scanner.nextInt();
-            scanner.nextLine();  // Clear the newline character
+            scanner.nextLine();
+
+            switch (option) {
+                case 1:
+                    showCreateAddMenu(university);
+                    break;
+                case 2:
+                    showChangeStatusMenu(university);
+                    break;
+                case 3:
+                    System.out.println("Returning to the Main Menu.");
+                    return;
+                default:
+                    System.out.println("Invalid option. Please select a valid option.");
+            }
+        }
+    }
+
+    private static void showCreateAddMenu(University university) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("\n*** Create/Add Menu ***");
+            System.out.println("1. Teacher");
+            System.out.println("2. Student");
+            System.out.println("3. Class");
+            System.out.println("4. Add Student to Class");
+            System.out.println("5. Back to Modify Menu");
+            System.out.print("Select an option: ");
+
+            int option = scanner.nextInt();
+            scanner.nextLine();
 
             switch (option) {
                 case 1:
@@ -40,16 +66,40 @@ public class ModifyView {
                     UniversityController.addStudentToClass(university);
                     break;
                 case 5:
-                    TeacherController.removeTeacherById(university);
+                    System.out.println("Returning to the Modify Menu.");
+                    return;
+                default:
+                    System.out.println("Invalid option. Please select a valid option.");
+            }
+        }
+    }
+
+    private static void showChangeStatusMenu(University university) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("\n*** Change Status (Active/Inactive) Menu ***");
+            System.out.println("1. Teacher");
+            System.out.println("2. Student");
+            System.out.println("3. Class");
+            System.out.println("4. Back to Modify Menu");
+            System.out.print("Select an option: ");
+
+            int option = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (option) {
+                case 1:
+                    TeacherController.changeStatusTeacherById(university);
                     break;
-                case 6:
-                    StudentController.removeStudentById(university);
+                case 2:
+                    StudentController.changeStatusStudentById(university);
                     break;
-                case 7:
-                    ClassController.removeClassById(university);
+                case 3:
+                    ClassController.changeStatusClassById(university);
                     break;
-                case 8:
-                    System.out.println("Returning to the Main Menu.");
+                case 4:
+                    System.out.println("Returning to the Modify Menu.");
                     return;
                 default:
                     System.out.println("Invalid option. Please select a valid option.");
