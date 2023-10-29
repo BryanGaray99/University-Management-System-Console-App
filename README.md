@@ -4,7 +4,7 @@
 
 Globant University - BG is a university tracking project that combines the fundamentals of Object-Oriented Programming 
 (OOP) and the Model-View-Controller (MVC) architecture. The project allows you to manage and track information about 
-professors, students, and classes in a fictional university, maintaining clean code and adhering to the four pillars 
+teachers, students, and classes in a fictional university, maintaining clean code and adhering to the four pillars 
 of OOP: encapsulation, inheritance, polymorphism, and abstraction.
 
 ## Project Structure
@@ -94,9 +94,21 @@ for calculating salaries in the `Teacher` subclasses.
 
 ### Class Diagram
 <P align="center">
-   <img src="https://i.ibb.co/44KB0C1/Diagrama-UML.png" alt="Preview.png" style="height: 400px;">
+   <img src="https://i.ibb.co/18HsdXs/Diagrama-UMLv2.png" alt="Preview.png" style="height: 400px; border-radius: 25px">
 
-<P align="center">Link to the image: https://i.ibb.co/44KB0C1/Diagrama-UML.png </P>
+<P align="center">Link to the image: https://i.ibb.co/18HsdXs/Diagrama-UMLv2.png </P>
+The diagram was make with the tool: Software Ideas Modeler. In the diagram we can see the classes and the relationships 
+between them. The classes are represented by rectangles and the relationships by arrows. The arrows indicate the type of 
+relation. 
+
+- We can clearly see that Student and Employee `Inherit` from User, then Teacher `Inherit`  from Employee and 
+FullTimeTeacher and PartTimeTeacher `Inherit`  from Teacher. 
+- There is also a relationship of ``Aggregation`` between Class and WeeklySchedule, Teacher and Student because a class 
+is made up of a schedule, a teacher and students.
+- There is a relationship of ``Realization`` between StudentClass and Class, due to StudentClass is an interface 
+that serves like the functionality that can use a Class.
+- Finally, we have a ``Composition`` relationship between University and Classes, Teachers and Students. It is a 
+composition because once the University is destroyed, the other classes are also destroyed.
 
 ## Controllers
 
