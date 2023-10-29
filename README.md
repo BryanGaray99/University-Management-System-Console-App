@@ -94,8 +94,8 @@ for calculating salaries in the `Teacher` subclasses.
 
 ### Class Diagram
 <P align="center">
-   <img src="https://i.ibb.co/dMfMdsw/Diagrama-UMLv3.png" alt="Preview.png" style="height: 400px">
-<P align="center">Link to the image: https://i.ibb.co/dMfMdsw/Diagrama-UMLv3.png </P>
+   <img src="https://i.ibb.co/6y9fZ7g/Diagrama-UMLv3.png" alt="Preview.png" style="height: 400px">
+<P align="center">Link to the image: https://i.ibb.co/6y9fZ7g/Diagrama-UMLv3.png </P>
 The diagram was make with the tool: Software Ideas Modeler. In the diagram we can see the classes and the relationships 
 between them. The classes are represented by rectangles and the relationships by arrows. The arrows indicate the type of 
 relation. 
