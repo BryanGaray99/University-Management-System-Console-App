@@ -5,7 +5,7 @@ import org.bg.university.model.University;
 import org.bg.university.view.MainView;
 
 /**
- * @version 2.0.0
+ * @version 3.0.0
  * @author Bryan Garay
  */
 public class Main {
