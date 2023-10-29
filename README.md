@@ -1,4 +1,5 @@
-# Globant University - BG
+# Globant University - BG 
+Version 1.2.0 - Included a validation data input layer.
 
 ## Project Description
 
