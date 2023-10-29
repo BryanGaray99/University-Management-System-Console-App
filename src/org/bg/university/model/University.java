@@ -3,6 +3,9 @@ package org.bg.university.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Bryan Garay
+ */
 public class University {
     private List<Teacher> teachers;
     private List<Student> students;

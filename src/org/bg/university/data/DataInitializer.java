@@ -3,7 +3,15 @@ package org.bg.university.data;
 import org.bg.university.model.*;
 import org.bg.university.model.Class;
 
+/**
+ * Class for initializing the university with some data
+ * @author Bryan Garay
+ */
 public class DataInitializer {
+    /**
+     * Initializes the university with some data
+     * @param university University object to initialize
+     */
     public static void initializeData(University university) {
         // Initialize teachers
         FullTimeTeacher fullTimeTeacher1 = new FullTimeTeacher("John Smith", 50, 10, 3000);

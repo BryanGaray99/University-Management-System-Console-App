@@ -1,5 +1,8 @@
 package org.bg.university.model;
 
+/**
+ * @author Bryan Garay
+ */
 public class User {
     private String name;
     private int age;

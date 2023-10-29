@@ -2,6 +2,9 @@ package org.bg.university.model;
 
 import org.bg.university.utils.IdGenerator;
 
+/**
+ * @author Bryan Garay
+ */
 public class Student extends User {
     private int studentId;
 

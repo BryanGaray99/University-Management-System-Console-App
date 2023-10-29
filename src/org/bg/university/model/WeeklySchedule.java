@@ -3,6 +3,9 @@ package org.bg.university.model;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * @author Bryan Garay
+ */
 public class WeeklySchedule {
     private String daysOfWeek;
     private LocalTime startHour;

@@ -2,6 +2,9 @@ package org.bg.university.model;
 
 import org.bg.university.utils.SalaryCalculator;
 
+/**
+ * @author Bryan Garay
+ */
 public class PartTimeTeacher extends Teacher {
     private double baseSalary;
     private int activeHoursPerWeek;

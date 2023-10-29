@@ -8,9 +8,16 @@ import org.bg.university.model.PartTimeTeacher;
 import org.bg.university.model.Teacher;
 import org.bg.university.model.University;
 
+/**
+ * TeacherController is a class that contains methods to create, select, and change the status of a teacher.
+ * @author Bryan Garay
+ */
 public class TeacherController {
-
     // Public methods
+    /**
+     * Creates a new teacher and adds it to the university.
+     * @param university
+     */
     public static void createTeacher(University university) {
         Scanner scanner = new Scanner(System.in);
 
@@ -33,6 +40,11 @@ public class TeacherController {
         }
     }
 
+    /**
+     * Selects an active teacher from the university.
+     * @param university The university to select the teacher from.
+     * @return The selected teacher, or null if no teachers are available.
+     */
     public static Teacher selectActiveTeacher(University university) {
         Scanner scanner = new Scanner(System.in);
 
@@ -57,6 +69,10 @@ public class TeacherController {
         }
     }
 
+    /**
+     * Prints the list of active teachers.
+     * @param university The university to select the teacher from.
+     */
     public static void printActiveTeachers(University university) {
         List<Teacher> teachers = university.getTeachers();
 
@@ -74,6 +90,10 @@ public class TeacherController {
         }
     }
 
+    /**
+     * Changes the status of a teacher.
+     * @param university The university to select the teacher from.
+     */
     public static void changeStatusTeacherById(University university) {
         Scanner scanner = new Scanner(System.in);
 
@@ -90,6 +110,12 @@ public class TeacherController {
         }
     }
 
+    /**
+     * Creates a new full-time teacher and adds it to the university.
+     * @param university The university to select the teacher from.
+     * @param name The name of the teacher.
+     * @param age The age of the teacher.
+     */
     // Private Methods
     private static void createFullTimeTeacher(University university, String name, int age) {
         Scanner scanner = new Scanner(System.in);
@@ -105,6 +131,12 @@ public class TeacherController {
         System.out.println("The teacher has been created.");
     }
 
+    /**
+     * Creates a new part-time teacher and adds it to the university.
+     * @param university The university to select the teacher from.
+     * @param name The name of the teacher.
+     * @param age The age of the teacher.
+     */
     private static void createPartTimeTeacher(University university, String name, int age) {
         Scanner scanner = new Scanner(System.in);
 
@@ -119,6 +151,11 @@ public class TeacherController {
         System.out.println("The teacher has been created.");
     }
 
+    /**
+     * @param university The university to select the teacher from.
+     * @param teacherId The ID of the teacher to find.
+     * @return The teacher with the given ID, or null if no teacher is found.
+     */
     private static Teacher findTeacherById(University university, int teacherId) {
         for (Teacher teacher : university.getTeachers()) {
             if (teacher.getEmployeeId() == teacherId) {
@@ -128,6 +165,10 @@ public class TeacherController {
         return null;
     }
 
+    /**
+     * Prints the list of active teachers.
+     * @param teachers The list of teachers to print.
+     */
     private static void ListActiveTeachers(List<Teacher> teachers) {
         System.out.println("Active teachers:");
         for (int i = 0; i < teachers.size(); i++) {
@@ -137,6 +178,10 @@ public class TeacherController {
         }
     }
 
+    /**
+     * Prints the information of a teacher.
+     * @param teacher The teacher to print.
+     */
     private static void printTeacherInfo(Teacher teacher) {
         System.out.println("ID: " + teacher.getEmployeeId());
         System.out.println("Name: " + teacher.getName());
@@ -153,6 +198,10 @@ public class TeacherController {
         }
     }
 
+    /**
+     * Toggles the status of a teacher.
+     * @param teacher The teacher to toggle the status of.
+     */
     private static void toggleTeacherStatus(Teacher teacher) {
         boolean isActive = teacher.isActive();
         teacher.setActive(!isActive);

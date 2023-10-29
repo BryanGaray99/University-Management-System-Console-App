@@ -8,8 +8,17 @@ import org.bg.university.model.Class;
 import org.bg.university.model.Student;
 import org.bg.university.model.University;
 
+/**
+ * UniversityController is a class that contains methods to add a student to a class and list the classes for a student.
+ * @author Bryan Garay
+ */
 public class UniversityController {
     // Public methods
+
+    /**
+     * Adds a student to a class.
+     * @param university The university to add the student to.
+     */
     public static void addStudentToClass(University university) {
         Scanner scanner = new Scanner(System.in);
         Student selectedStudent = StudentController.selectStudent(university);
@@ -40,6 +49,10 @@ public class UniversityController {
         } while (classChoice != 0);
     }
 
+    /**
+     * Prints a list of the classes for a given student.
+     * @param university The university to select the student from.
+     */
     public static void listClassesForStudent(University university) {
         Scanner scanner = new Scanner(System.in);
 
@@ -63,6 +76,11 @@ public class UniversityController {
         }
     }
 
+    /**
+     * @param university The university to select the student from.
+     * @param studentId The ID of the student to find.
+     * @return The classes for the student, or an empty list if the student does not have any classes.
+     */
     // Private methods
     private static List<Class> getActiveClassesForStudent(University university, int studentId) {
         List<Class> classesForStudent = new ArrayList<>();
@@ -79,6 +97,12 @@ public class UniversityController {
         return classesForStudent;
     }
 
+    /**
+     * Prints the information of classes for a student.
+     * @param studentId The ID of the student to print the classes for.
+     * @param studentName The name of the student to print the classes for.
+     * @param classes The classes to print.
+     */
     private static void printClassesForStudent(int studentId, String studentName, List<Class> classes) {
         System.out.println("Classes for the active student with ID '" + studentId + "':");
         System.out.println("Name of the student: " + studentName);

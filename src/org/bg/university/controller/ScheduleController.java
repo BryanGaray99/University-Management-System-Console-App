@@ -6,7 +6,16 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
+/**
+ * This class contains methods to create and manage weekly schedules.
+ * @author Bryan Garay
+ */
 public class ScheduleController {
+    // Public methods
+    /**
+     * Creates a new WeeklySchedule object.
+     * @return A new WeeklySchedule object.
+     */
     public static WeeklySchedule createWeeklySchedule() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Days of the week (e.g., Monday, Tuesday, Wednesday): ");
@@ -27,6 +36,12 @@ public class ScheduleController {
         }
     }
 
+    /**
+     * Checks if a time is in the 'HH:mm' format.
+     * @param time A string representing a time in the 'HH:mm' format.
+     * @return True if the time is in the 'HH:mm' format, false otherwise.
+     */
+    // Private methods
     private static boolean isValidTimeFormat(String time) {
         try {
             LocalTime.parse(time, DateTimeFormatter.ofPattern("HH:mm"));

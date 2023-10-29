@@ -5,6 +5,9 @@ import org.bg.university.utils.IdGenerator;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Bryan Garay
+ */
 public class Class implements StudentClass {
     private int classId;
     private String name;

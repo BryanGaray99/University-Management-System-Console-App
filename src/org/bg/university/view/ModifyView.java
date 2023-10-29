@@ -7,6 +7,10 @@ import org.bg.university.controller.StudentController;
 import org.bg.university.controller.ClassController;
 import org.bg.university.model.University;
 
+/**
+ * This class is responsible for displaying the menu for modifying the registry of the university.
+ * @author Bryan Garay
+ */
 public class ModifyView {
     public static void showModifyMenu(University university) {
         Scanner scanner = new Scanner(System.in);
