@@ -96,7 +96,7 @@ for calculating salaries in the `Teacher` subclasses.
 <P align="center">
    <img src="https://i.ibb.co/44KB0C1/Diagrama-UML.png" alt="Preview.png" style="height: 400px;">
 
-<P align="center">[Link to the image](https://i.ibb.co/44KB0C1/Diagrama-UML.png)</P>
+<P align="center">Link to the image: https://i.ibb.co/44KB0C1/Diagrama-UML.png </P>
 
 ## Controllers
 
@@ -170,15 +170,15 @@ Enjoy managing your university with this application!
 
 **Note:** Ensure you have all the necessary dependencies installed before running the project.
 
-### Contributing
+## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first
 to discuss what you would like to change.
 
-### Author 
+## Author 
 Bryan Enrique Garay Benavidez :telescope:
 
-### Final note
+## Final note
 
 Special thanks to Globant and to the instructors of the Bootcamp: Joel, Jazmin and Felipe for the support, the 
 knowledge shared and the good vibes during the course :sparkles:.
