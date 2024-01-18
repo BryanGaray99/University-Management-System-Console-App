@@ -1,9 +1,9 @@
-# Globant University - BG 
+# University Mangement System- BG 
 Version 1.2.0 - Included a validation data input layer.
 
 ## Project Description
 
-Globant University - BG is a university tracking project that combines the fundamentals of Object-Oriented Programming 
+This is a university tracking project that combines the fundamentals of Object-Oriented Programming 
 (OOP) and the Model-View-Controller (MVC) architecture. The project allows you to manage and track information about 
 teachers, students, and classes in a fictional university, maintaining clean code and adhering to the four pillars 
 of OOP: encapsulation, inheritance, polymorphism, and abstraction.
@@ -174,7 +174,7 @@ that the application does not crash due to invalid input.
 
 Follow these steps to run the project:
 
-1. Clone the project from the repository: `git clone https://github.com/BryanGaray99/University-Globant-BG.git`
+1. Clone the project
 
 2. Open the main file containing the `main` function of the application.
 
@@ -197,5 +197,5 @@ Bryan Enrique Garay Benavidez :telescope:
 
 ## Final note
 
-Special thanks to Globant and to the instructors of the Bootcamp: Joel, Jazmin and Felipe for the support, the 
+Special thanks to the instructors of the Bootcamp: Joel, Jazmin and Felipe for the support, the 
 knowledge shared and the good vibes during the course :sparkles:.
